@@ -3,10 +3,14 @@ import { useEffect } from 'react'
 
 export default function App({ Component, pageProps }) {
   useEffect(() => {
-    const saved = typeof window !== 'undefined' && localStorage.getItem('rt-theme')
-    if(saved==='light'){ document.documentElement.classList.remove('dark'); }
-    else{ document.documentElement.classList.add('dark'); }
+    // RTL
     document.documentElement.setAttribute('dir','rtl')
+
+    // Theme init: saved or system preference
+    const saved = typeof window !== 'undefined' && localStorage.getItem('rt-theme')
+    const prefersLight = typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: light)').matches
+    const useLight = saved ? saved === 'light' : prefersLight
+    document.documentElement.classList.toggle('dark', !useLight)
 
     // reveal on scroll
     const obs = new IntersectionObserver((entries)=>{
@@ -14,5 +18,6 @@ export default function App({ Component, pageProps }) {
     },{threshold:0.12})
     document.querySelectorAll('.reveal').forEach(el=>obs.observe(el))
   }, [])
+
   return <Component {...pageProps} />
 }
