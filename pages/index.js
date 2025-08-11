@@ -44,10 +44,11 @@ export default function Home(){
             <h1 className="text-4xl sm:text-5xl leading-tight font-extrabold text-slate-50">
               שיעורים פרטיים במתמטיקה, פיזיקה ומדעי המחשב
             </h1>
-            <p className="mt-5 text-slate-300 text-lg">
-              שלום, אני רועי — סטודנט למדעי המחשב עם ניסיון רב בליווי תלמידי חטיבה, תיכון ומכללות.
-              אחרי שיחת היכרות קצרה (עם ההורה או התלמיד) נבנה תכנית לימודים מסודרת עד היעד.
-            </p>
+            <p className="mt-5 text-slate-700 dark:text-slate-300 text-lg">
+  שלום, אני רועי — סטודנט למדעי המחשב עם ניסיון בליווי תלמידי חטיבה, תיכון, מכללות
+  ו<strong>הכנה לפסיכומטרי (כמותי)</strong>. אחרי שיחת היכרות קצרה (עם ההורה או התלמיד)
+  נבנה תכנית לימודים מסודרת עד היעד.
+</p>
             <div className="mt-6 flex gap-3">
               <a href="#contact" className="px-5 py-3 rounded-2xl bg-tealBrand text-[#061019] font-bold shadow hover:shadow-tealBrand/30 transition">קבעו שיעור עכשיו</a>
               <a href="#services" className="px-5 py-3 rounded-2xl border border-white/15 hover:border-tealBrand hover:text-tealBrand transition">לכל השירותים</a>
@@ -77,12 +78,18 @@ export default function Home(){
         <div className="max-w-6xl mx-auto px-4 py-14">
           <h2 className="text-3xl font-bold text-tealBrand mb-8 reveal">השירותים שלי</h2>
           <div className="grid md:grid-cols-3 gap-6">
-            {['מתמטיקה','פיזיקה','מדעי המחשב'].map((t,i)=>(
-              <div key={i} className="card p-6 reveal">
-                <div className="text-xl font-semibold mb-2">{t}</div>
-                <p className="text-slate-300 mb-5">{t==='מתמטיקה'?'הבנה מעמיקה, פתרון שאלות מורכבות והכנה לבגרויות.':t==='פיזיקה'?'עקרונות הפיזיקה בצורה ברורה, ותרגול ממוקד להצלחה.':'שפות תכנות, חשיבה אלגוריתמית, והכנה לקורסים/ריאיונות.'}</p>
-                <a href="#contact" className="inline-block text-sm font-semibold text-tealBrand hover:underline">קבעו שיעור בתחום זה</a>
-              </div>
+            {['מתמטיקה','פיזיקה','מדעי המחשב','פסיכומטרי (כמותי)'].map((t,i)=>(
+  <div key={i} className="card p-6 reveal">
+    <div className="text-xl font-semibold mb-2">{t}</div>
+    <p className="text-slate-600 dark:text-slate-300 mb-5">
+      {t==='מתמטיקה' && 'הבנה מעמיקה, פתרון שאלות מורכבות והכנה לבגרויות.'}
+      {t==='פיזיקה' && 'עקרונות הפיזיקה בצורה ברורה, ותרגול ממוקד להצלחה.'}
+      {t==='מדעי המחשב' && 'שפות תכנות, חשיבה אלגוריתמית, והכנה לקורסים/ריאיונות.'}
+      {t==='פסיכומטרי (כמותי)' && 'אסטרטגיות פתרון, בניית מהירות ודיוק, תרגול ממוקד בנושאי כמותי עד תוצאות.'}
+    </p>
+    <a href="#quick" className="inline-block text-sm font-semibold text-tealBrand hover:underline">תיאום מהיר בתחום זה</a>
+  </div>
+))}
             ))}
           </div>
         </div>
@@ -116,7 +123,37 @@ export default function Home(){
           </div>
         </div>
       </section>
-
+{/* PSYCHOMETRY PLAN */}
+<section id="psy-quant" className="bg-white dark:bg-ink border-y border-black/10 dark:border-white/10">
+  <div className="max-w-6xl mx-auto px-4 py-14">
+    <h2 className="text-3xl font-bold text-tealBrand mb-4 reveal">תכנית לימוד — פסיכומטרי (כמותי)</h2>
+    <div className="grid md:grid-cols-12 gap-8 reveal">
+      <div className="md:col-span-7 space-y-3 text-slate-700 dark:text-slate-300">
+        <p>תכנית ממוקדת להעלאת ציוני הכמותי: שליטה ביסודות, שיטות קצרות, ניהול זמן, ותרגול מדורג.</p>
+        <ul className="list-disc pr-5 space-y-1">
+          <li>יסודות: חזקות, שברים, אחוזים, יחס ופרופורציה</li>
+          <li>אלגברה: משוואות/אי־שוויונים, סדרות, פונקציות בסיסיות</li>
+          <li>בעיות מילוליות: הסבות, תנועה/זמן/מרחק, עבודה משותפת</li>
+          <li>גיאומטריה: שטחים, נפחים, זוויות, מעגלים</li>
+          <li>טכניקות זמן: הערכות, קיצורים, “לא להיתקע”</li>
+          <li>תרגול מדורג: מבניית ביטחון → מהירות → סימולציות</li>
+        </ul>
+        <p className="mt-3">נקבע מדדים שבועיים, מעקב התקדמות, ושיעורי בית ממוקדים עם משוב.</p>
+      </div>
+      <div className="md:col-span-5">
+        <div className="rounded-2xl border border-tealBrand/30 bg-tealBrand/10 dark:bg-tealBrand/15 p-5">
+          <div className="text-lg font-semibold mb-2">התחלה מהירה</div>
+          <ol className="list-decimal pr-5 space-y-1 text-slate-700 dark:text-slate-200">
+            <li>שיחת אבחון קצרה (10–15 דק׳)</li>
+            <li>בדיקת רמת פתיחה ומטרת ציון</li>
+            <li>בניית מסלול מותאם ולוח תרגול</li>
+          </ol>
+          <a href="#quick" className="mt-4 inline-flex justify-center w-full rounded-xl bg-tealBrand text-[#061019] font-semibold px-4 py-3">תיאום מהיר לכמותי</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
       {/* FAQ */}
       <section id="faq" className="bg-ink2 border-y border-white/10">
         <div className="max-w-6xl mx-auto px-4 py-14">
