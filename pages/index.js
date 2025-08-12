@@ -51,7 +51,7 @@ export default function Home(){
     // ברירת מחדל – בהיר; כהה עם מחלקת dark על <html>
     <div className="min-h-screen bg-white text-slate-900 dark:bg-ink dark:text-slate-100">
       <Head>
-        <title>RoieTutor — שיעורים פרטיים במתמטיקה, פיזיקה, מדעי המחשב ופסיכומטרי (כמותי)</title>
+        <title>TEST123 — שיעורים פרטיים במתמטיקה, פיזיקה, מדעי המחשב ופסיכומטרי (כמותי)</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       {ThemeInit}
