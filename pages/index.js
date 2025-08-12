@@ -3,9 +3,33 @@ import StickyCTA from '@/components/StickyCTA'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import Script from 'next/script'
 
 export default function Home(){
-  // טופס תיאום מהיר (3 שלבים)
+  // ---- סקריפט מצב בהיר/כהה לפני טעינת הדף (מונע "הבהוב") ----
+  // לא צריך _document.js – הכל מתבצע כאן עם beforeInteractive
+  const ThemeInit = (
+    <Script id="rt-theme-init" strategy="beforeInteractive">
+      {`
+      (function(){
+        try{
+          var saved = localStorage.getItem('rt-theme');
+          var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+          var useLight = saved ? (saved === 'light') : prefersLight;
+          var html = document.documentElement;
+          html.setAttribute('dir','rtl');
+          if(useLight){ html.classList.remove('dark'); }
+          else{ html.classList.add('dark'); }
+        }catch(e){
+          document.documentElement.classList.add('dark');
+          document.documentElement.setAttribute('dir','rtl');
+        }
+      })();
+      `}
+    </Script>
+  );
+
+  // ---- טופס תיאום מהיר (3 שלבים) ----
   const [step,setStep] = useState(1)
   const [subject,setSubject] = useState('מתמטיקה')
   const [level,setLevel] = useState('חטיבה')
@@ -24,12 +48,13 @@ export default function Home(){
   }
 
   return (
-    // שים לב: ברירת מחדל בהיר; כהה עם מחלקת dark
+    // ברירת מחדל – בהיר; כהה עם מחלקת dark על <html>
     <div className="min-h-screen bg-white text-slate-900 dark:bg-ink dark:text-slate-100">
       <Head>
-        <title>RoieTutor — שיעורים פרטיים במתמטיקה, פיזיקה ומדעי המחשב</title>
+        <title>RoieTutor — שיעורים פרטיים במתמטיקה, פיזיקה, מדעי המחשב ופסיכומטרי (כמותי)</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
+      {ThemeInit}
 
       <header className="sticky top-0 z-50 backdrop-blur bg-white/80 dark:bg-ink/80 border-b border-black/10 dark:border-white/10">
         <nav className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
@@ -38,6 +63,7 @@ export default function Home(){
             <li className="hover:text-tealBrand"><a href="#home">בית</a></li>
             <li className="hover:text-tealBrand"><a href="#services">שירותים</a></li>
             <li className="hover:text-tealBrand"><a href="#pricing">תמחור</a></li>
+            <li className="hover:text-tealBrand"><a href="#psy-quant">פסיכומטרי (כמותי)</a></li>
             <li className="hover:text-tealBrand"><a href="#about">אודות</a></li>
             <li className="hover:text-tealBrand"><a href="#faq">שאלות נפוצות</a></li>
             <li className="hover:text-tealBrand"><a href="#contact">צור קשר</a></li>
@@ -64,13 +90,13 @@ export default function Home(){
         <div className="max-w-6xl mx-auto px-4 pt-12 pb-12 grid md:grid-cols-12 gap-10 items-center">
           <motion.div className="md:col-span-6 reveal" initial={{opacity:0, y:14}} animate={{opacity:1,y:0}} transition={{duration:.6}}>
             <h1 className="text-4xl sm:text-5xl leading-tight font-extrabold">
-              שיעורים פרטיים במתמטיקה, פיזיקה ומדעי המחשב
+              שיעורים פרטיים במתמטיקה, פיזיקה, מדעי המחשב ופסיכומטרי (כמותי)
             </h1>
             <p className="mt-5 text-slate-700 dark:text-slate-300 text-lg">
-  שלום, אני רועי — סטודנט למדעי המחשב עם ניסיון בליווי תלמידי חטיבה, תיכון, מכללות
-  ו<strong>הכנה לפסיכומטרי (כמותי)</strong>. אחרי שיחת היכרות קצרה (עם ההורה או התלמיד)
-  נבנה תכנית לימודים מסודרת עד היעד.
-</p>
+              שלום, אני רועי — סטודנט למדעי המחשב עם ניסיון בליווי תלמידי חטיבה, תיכון, מכללות
+              ו<strong>הכנה לפסיכומטרי (כמותי)</strong>. אחרי שיחת היכרות קצרה (עם ההורה או התלמיד)
+              נבנה תכנית לימודים מסודרת עד היעד.
+            </p>
             <div className="mt-6 flex gap-3">
               <a href="#contact" className="px-5 py-3 rounded-2xl bg-tealBrand text-[#061019] font-bold shadow hover:shadow-tealBrand/30 transition">קבעו שיעור עכשיו</a>
               <a href="#quick" className="px-5 py-3 rounded-2xl border border-black/10 dark:border-white/15 hover:border-tealBrand hover:text-tealBrand transition">תיאום מהיר</a>
@@ -99,25 +125,24 @@ export default function Home(){
       <section id="services" className="bg-slate-50 dark:bg-ink2 border-y border-black/10 dark:border-white/10">
         <div className="max-w-6xl mx-auto px-4 py-14">
           <h2 className="text-3xl font-bold text-tealBrand mb-8 reveal">השירותים שלי</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-           {['מתמטיקה','פיזיקה','מדעי המחשב','פסיכומטרי (כמותי)'].map((t,i)=>(
-  <div key={i} className="card p-6 reveal">
-    <div className="text-xl font-semibold mb-2">{t}</div>
-    <p className="text-slate-600 dark:text-slate-300 mb-5">
-      {t==='מתמטיקה' && 'הבנה מעמיקה, פתרון שאלות מורכבות והכנה לבגרויות.'}
-      {t==='פיזיקה' && 'עקרונות הפיזיקה בצורה ברורה, ותרגול ממוקד להצלחה.'}
-      {t==='מדעי המחשב' && 'שפות תכנות, חשיבה אלגוריתמית, והכנה לקורסים/ריאיונות.'}
-      {t==='פסיכומטרי (כמותי)' && 'אסטרטגיות פתרון, בניית מהירות ודיוק, תרגול ממוקד בנושאי כמותי עד תוצאות.'}
-    </p>
-    <a href="#quick" className="inline-block text-sm font-semibold text-tealBrand hover:underline">תיאום מהיר בתחום זה</a>
-  </div>
-))}
+          <div className="grid md:grid-cols-4 gap-6">
+            {['מתמטיקה','פיזיקה','מדעי המחשב','פסיכומטרי (כמותי)'].map((t,i)=>(
+              <div key={i} className="card p-6 reveal">
+                <div className="text-xl font-semibold mb-2">{t}</div>
+                <p className="text-slate-600 dark:text-slate-300 mb-5">
+                  {t==='מתמטיקה' && 'הבנה מעמיקה, פתרון שאלות מורכבות והכנה לבגרויות.'}
+                  {t==='פיזיקה' && 'עקרונות הפיזיקה בצורה ברורה, ותרגול ממוקד להצלחה.'}
+                  {t==='מדעי המחשב' && 'שפות תכנות, חשיבה אלגוריתמית, והכנה לקורסים/ריאיונות.'}
+                  {t==='פסיכומטרי (כמותי)' && 'אסטרטגיות פתרון, בניית מהירות ודיוק, ניהול זמן ותרגול ממוקד עד תוצאות.'}
+                </p>
+                <a href="#quick" className="inline-block text-sm font-semibold text-tealBrand hover:underline">תיאום מהיר בתחום זה</a>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* PRICING – מדגישים זום */}
+      {/* PRICING */}
       <section id="pricing" className="bg-white dark:bg-ink">
         <div className="max-w-6xl mx-auto px-4 py-14">
           <h2 className="text-3xl font-bold text-tealBrand mb-8 reveal">תמחור</h2>
@@ -156,7 +181,7 @@ export default function Home(){
         </div>
       </section>
 
-      {/* QUICK BOOKING – תיאום מהיר בשלבים */}
+      {/* QUICK BOOKING */}
       <section id="quick" className="bg-slate-50 dark:bg-ink2 border-y border-black/10 dark:border-white/10">
         <div className="max-w-6xl mx-auto px-4 py-14">
           <h2 className="text-3xl font-bold text-tealBrand mb-6 reveal">תיאום מהיר</h2>
@@ -169,16 +194,17 @@ export default function Home(){
                     <option>מתמטיקה</option>
                     <option>פיזיקה</option>
                     <option>מדעי המחשב</option>
+                    <option>פסיכומטרי (כמותי)</option>
                   </select>
                 </div>
                 <div>
                   <label className="block text-sm mb-1">רמה</label>
-                <select value={subject} onChange={e=>setSubject(e.target.value)} className="w-full rounded-xl border border-black/10 dark:border-white/15 bg-white dark:bg-white/5 px-3 py-2">
-  <option>מתמטיקה</option>
-  <option>פיזיקה</option>
-  <option>מדעי המחשב</option>
-  <option>פסיכומטרי (כמותי)</option>
-</select>
+                  <select value={level} onChange={e=>setLevel(e.target.value)} className="w-full rounded-xl border border-black/10 dark:border-white/15 bg-white dark:bg-white/5 px-3 py-2">
+                    <option>חטיבה</option>
+                    <option>תיכון (3–5 יחידות)</option>
+                    <option>אקדמי</option>
+                    <option>פסיכומטרי</option>
+                  </select>
                 </div>
                 <div className="md:col-span-2 flex items-end">
                   <button type="button" onClick={()=>setStep(2)} className="w-full md:w-auto rounded-xl bg-tealBrand text-[#061019] font-semibold px-5 py-3">המשך</button>
@@ -227,6 +253,38 @@ export default function Home(){
         </div>
       </section>
 
+      {/* PSYCHOMETRY PLAN */}
+      <section id="psy-quant" className="bg-white dark:bg-ink border-y border-black/10 dark:border-white/10">
+        <div className="max-w-6xl mx-auto px-4 py-14">
+          <h2 className="text-3xl font-bold text-tealBrand mb-4 reveal">תכנית לימוד — פסיכומטרי (כמותי)</h2>
+          <div className="grid md:grid-cols-12 gap-8 reveal">
+            <div className="md:col-span-7 space-y-3 text-slate-700 dark:text-slate-300">
+              <p>תכנית ממוקדת להעלאת ציוני הכמותי: שליטה ביסודות, שיטות קצרות, ניהול זמן, ותרגול מדורג.</p>
+              <ul className="list-disc pr-5 space-y-1">
+                <li>יסודות: חזקות, שברים, אחוזים, יחס ופרופורציה</li>
+                <li>אלגברה: משוואות/אי־שוויונים, סדרות, פונקציות בסיסיות</li>
+                <li>בעיות מילוליות: הסבות, תנועה/זמן/מרחק, עבודה משותפת</li>
+                <li>גיאומטריה: שטחים, נפחים, זוויות, מעגלים</li>
+                <li>טכניקות זמן: הערכות, קיצורים, “לא להיתקע”</li>
+                <li>תרגול מדורג: מבניית ביטחון → מהירות → סימולציות</li>
+              </ul>
+              <p className="mt-3">נקבע מדדים שבועיים, מעקב התקדמות, ושיעורי בית ממוקדים עם משוב.</p>
+            </div>
+            <div className="md:col-span-5">
+              <div className="rounded-2xl border border-tealBrand/30 bg-tealBrand/10 dark:bg-tealBrand/15 p-5">
+                <div className="text-lg font-semibold mb-2">התחלה מהירה</div>
+                <ol className="list-decimal pr-5 space-y-1 text-slate-700 dark:text-slate-200">
+                  <li>שיחת אבחון קצרה (10–15 דק׳)</li>
+                  <li>בדיקת רמת פתיחה ומטרת ציון</li>
+                  <li>בניית מסלול מותאם ולוח תרגול</li>
+                </ol>
+                <a href="#quick" className="mt-4 inline-flex justify-center w-full rounded-xl bg-tealBrand text-[#061019] font-semibold px-4 py-3">תיאום מהיר לכמותי</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ABOUT */}
       <section id="about">
         <div className="max-w-6xl mx-auto px-4 py-14">
@@ -234,11 +292,12 @@ export default function Home(){
           <div className="grid md:grid-cols-12 gap-8 items-start">
             <div className="md:col-span-7 space-y-4 text-slate-700 dark:text-slate-200 leading-relaxed reveal">
               <p>
-                שמי רועי, ואני מציע שיעורים פרטיים במתמטיקה, פיזיקה ומדעי המחשב. אני סטודנט לתואר ראשון במדעי המחשב,
-                ובוגר מגמות ריאליות עם ניסיון רב בהוראה לתלמידי חטיבה, תיכון ומכללות.
+                שמי רועי, ואני מציע שיעורים פרטיים במתמטיקה, פיזיקה, מדעי המחשב ופסיכומטרי (כמותי).
+                אני סטודנט לתואר ראשון במדעי המחשב ובוגר מגמות ריאליות עם ניסיון רב בהוראה לתלמידי חטיבה, תיכון ומכללות.
               </p>
               <p>
-                אני מאמין בלמידה מותאמת אישית — <strong>אני כאן כדי שנגיע יחד לתוצאות</strong>. אחרי שיחת היכרות קצרה נכין תכנית לימודים מסודרת, ונעבוד מדורג עד היעד.
+                אני מאמין בלמידה מותאמת אישית — <strong>אני כאן כדי שנגיע יחד לתוצאות</strong>.
+                אחרי שיחת היכרות קצרה נכין תכנית לימודים מסודרת, ונעבוד מדורג עד היעד.
               </p>
               <div className="pt-2 flex flex-wrap gap-3">
                 <a href="tel:+972549480190" className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 dark:bg-white/5 ring-1 ring-black/10 dark:ring-white/10 hover:bg-slate-200 dark:hover:bg-white/10">
@@ -255,39 +314,8 @@ export default function Home(){
           </div>
         </div>
       </section>
-{/* PSYCHOMETRY PLAN */}
-<section id="psy-quant" className="bg-white dark:bg-ink border-y border-black/10 dark:border-white/10">
-  <div className="max-w-6xl mx-auto px-4 py-14">
-    <h2 className="text-3xl font-bold text-tealBrand mb-4 reveal">תכנית לימוד — פסיכומטרי (כמותי)</h2>
-    <div className="grid md:grid-cols-12 gap-8 reveal">
-      <div className="md:col-span-7 space-y-3 text-slate-700 dark:text-slate-300">
-        <p>תכנית ממוקדת להעלאת ציוני הכמותי: שליטה ביסודות, שיטות קצרות, ניהול זמן, ותרגול מדורג.</p>
-        <ul className="list-disc pr-5 space-y-1">
-          <li>יסודות: חזקות, שברים, אחוזים, יחס ופרופורציה</li>
-          <li>אלגברה: משוואות/אי־שוויונים, סדרות, פונקציות בסיסיות</li>
-          <li>בעיות מילוליות: הסבות, תנועה/זמן/מרחק, עבודה משותפת</li>
-          <li>גיאומטריה: שטחים, נפחים, זוויות, מעגלים</li>
-          <li>טכניקות זמן: הערכות, קיצורים, “לא להיתקע”</li>
-          <li>תרגול מדורג: מבניית ביטחון → מהירות → סימולציות</li>
-        </ul>
-        <p className="mt-3">נקבע מדדים שבועיים, מעקב התקדמות, ושיעורי בית ממוקדים עם משוב.</p>
-      </div>
-      <div className="md:col-span-5">
-        <div className="rounded-2xl border border-tealBrand/30 bg-tealBrand/10 dark:bg-tealBrand/15 p-5">
-          <div className="text-lg font-semibold mb-2">התחלה מהירה</div>
-          <ol className="list-decimal pr-5 space-y-1 text-slate-700 dark:text-slate-200">
-            <li>שיחת אבחון קצרה (10–15 דק׳)</li>
-            <li>בדיקת רמת פתיחה ומטרת ציון</li>
-            <li>בניית מסלול מותאם ולוח תרגול</li>
-          </ol>
-          <a href="#quick" className="mt-4 inline-flex justify-center w-full rounded-xl bg-tealBrand text-[#061019] font-semibold px-4 py-3">תיאום מהיר לכמותי</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-      {/* FAQ (כבר כולל העדכונים שלך) */}
+      {/* FAQ */}
       <section id="faq" className="bg-slate-50 dark:bg-ink2 border-y border-black/10 dark:border-white/10">
         <div className="max-w-6xl mx-auto px-4 py-14">
           <h2 className="text-3xl font-bold text-tealBrand mb-6 reveal">שאלות נפוצות</h2>
@@ -297,9 +325,9 @@ export default function Home(){
               { q:'איפה מתקיימים השיעורים?', a:'אונליין בזום, וכן פרונטליים באזור השרון (בכפוף לזמינות).' },
               { q:'איך קובעים שיעור?', a:'משאירים פרטים או פונים בוואטסאפ, ונוכל לתאם מועד לשיעור. אפשר זום או פרונטלי לפי הצורך.' },
               { q:'איך קובעים תכנית לימודים?', a:'לאחר אבחון קצר נגדיר יעדים, נפרק נושאים לתת-משימות, ונקבע לוח זמנים לשיעורים ולתרגול בית.' },
-              { q:'האם אתה מלמד פסיכומטרי (כמותי)?', a:'כן. נבנה מסלול ממוקד לפי רמת פתיחה ומטרת ציון, עם דגש על מהירות, דיוק וניהול זמן.' },
               { q:'האם יש שיעור ניסיון?', a:'כן, יש 50% הנחה על שיעור הניסיון.' },
-              { q:'באילו רמות אתה מלמד?', a:'חטיבה, תיכון (כולל 3–5 יחידות), וקורסים אקדמיים נבחרים.' },
+              { q:'האם אתה מלמד פסיכומטרי (כמותי)?', a:'כן. נבנה מסלול ממוקד לפי רמת פתיחה ומטרת ציון, עם דגש על מהירות, דיוק וניהול זמן.' },
+              { q:'באילו רמות אתה מלמד?', a:'חטיבה, תיכון (כולל 3–5 יחידות), פסיכומטרי, וקורסים אקדמיים נבחרים.' },
               { q:'מה מדיניות ביטולים?', a:'ביטול/דחייה עד 24 שעות לפני השיעור ללא חיוב. בפחות מכך — יחויב בהתאם למדיניות.' },
             ].map((f,i)=>(
               <details key={i} className="rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-white/5 p-5 reveal">
