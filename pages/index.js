@@ -484,10 +484,7 @@ export default function Home() {
       </section>
 
       {/* שאלות נפוצות */}
-      <section
-        id="faq"
-        className="bg-gradient-to-b from-slate-50 to-white dark:from-ink2 dark:to-ink border-y border-black/10 dark:border-white/10"
-      >
+    <section id="faq" className="bg-gradient-to-b from-slate-50 to-white dark:from-ink2 dark:to-ink border-y border-black/10 dark:border-white/10">
         <div className="max-w-6xl mx-auto px-4 py-14">
           <h2 className="text-3xl font-bold text-tealBrand mb-6 reveal">שאלות נפוצות</h2>
           <div className="space-y-3">
