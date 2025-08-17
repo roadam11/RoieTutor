@@ -51,7 +51,7 @@ export default function Home(){
     // ברירת מחדל – בהיר; כהה עם מחלקת dark על <html>
     <div className="min-h-screen bg-white text-slate-900 dark:bg-ink dark:text-slate-100">
       <Head>
-        <title>TEST123 — שיעורים פרטיים במתמטיקה, פיזיקה, מדעי המחשב ופסיכומטרי (כמותי)</title>
+     <title>RoieTutor — שיעורים פרטיים במתמטיקה, פיזיקה, מדמ"ח ופסיכומטרי</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       {ThemeInit}
@@ -61,7 +61,7 @@ export default function Home(){
           <div className="text-2xl font-bold tracking-tight text-tealBrand">RoieTutor</div>
           <ul className="hidden md:flex gap-6 text-sm text-slate-600 dark:text-slate-300">
             <li className="hover:text-tealBrand"><a href="#home">בית</a></li>
-            <li className="hover:text-tealBrand"><a href="#services">שירותים</a></li>
+          <li className="hover:text-tealBrand"><a href="#services">תחומי לימוד</a></li>
             <li className="hover:text-tealBrand"><a href="#pricing">תמחור</a></li>
             <li className="hover:text-tealBrand"><a href="#psy-quant">פסיכומטרי (כמותי)</a></li>
             <li className="hover:text-tealBrand"><a href="#about">אודות</a></li>
@@ -89,12 +89,12 @@ export default function Home(){
 
         <div className="max-w-6xl mx-auto px-4 pt-12 pb-12 grid md:grid-cols-12 gap-10 items-center">
           <motion.div className="md:col-span-6 reveal" initial={{opacity:0, y:14}} animate={{opacity:1,y:0}} transition={{duration:.6}}>
-            <h1 className="text-4xl sm:text-5xl leading-tight font-extrabold">
-              שיעורים פרטיים במתמטיקה, פיזיקה, מדעי המחשב ופסיכומטרי (כמותי)
-            </h1>
+           <h1 className="text-4xl sm:text-5xl leading-tight font-extrabold">
+  שיעורים פרטיים — מתמטיקה • פיזיקה • מדמ"ח • פסיכומטרי
+</h1>
             <p className="mt-5 text-slate-700 dark:text-slate-300 text-lg">
               שלום, אני רועי — סטודנט למדעי המחשב עם ניסיון בליווי תלמידי חטיבה, תיכון, מכללות
-              ו<strong>הכנה לפסיכומטרי (כמותי)</strong>. אחרי שיחת היכרות קצרה (עם ההורה או התלמיד)
+              והכנה לפסיכומטרי (כמותי). אחרי שיחת היכרות קצרה (עם ההורה או התלמיד)
               נבנה תכנית לימודים מסודרת עד היעד.
             </p>
             <div className="mt-6 flex gap-3">
@@ -124,7 +124,7 @@ export default function Home(){
       {/* SERVICES */}
       <section id="services" className="bg-slate-50 dark:bg-ink2 border-y border-black/10 dark:border-white/10">
         <div className="max-w-6xl mx-auto px-4 py-14">
-          <h2 className="text-3xl font-bold text-tealBrand mb-8 reveal">השירותים שלי</h2>
+         <h2 className="text-3xl font-bold text-tealBrand mb-8 reveal">תחומי לימוד</h2>
           <div className="grid md:grid-cols-4 gap-6">
             {['מתמטיקה','פיזיקה','מדעי המחשב','פסיכומטרי (כמותי)'].map((t,i)=>(
               <div key={i} className="card p-6 reveal">
@@ -153,9 +153,10 @@ export default function Home(){
                 <h3 className="text-xl font-semibold">זום — מומלץ</h3>
                 <span className="text-xs bg-tealBrand/20 text-tealBrand px-2 py-1 rounded-full">גמיש לכל הארץ</span>
               </div>
-              <div className="mt-3 text-4xl font-extrabold">
-                <span>₪170</span><span className="text-lg align-top">/שעה</span>
-              </div>
+             <div className="mt-3 text-4xl font-extrabold">
+  <span className="text-slate-400 line-through text-2xl align-top ml-2">₪170</span>
+  <span>₪150</span><span className="text-lg align-top">/שעה</span>
+</div>
               <ul className="mt-4 space-y-2 text-slate-700 dark:text-slate-300">
                 <li>✔️ שיעור של 60 דק׳ (משעה עגולה)</li>
                 <li>✔️ לוח שיתופי + שליחת חומר מסכם</li>
