@@ -90,10 +90,11 @@ export default function Home(){
         <div className="max-w-6xl mx-auto px-4 pt-12 pb-12 grid md:grid-cols-12 gap-10 items-center">
           <motion.div className="md:col-span-6 reveal" initial={{opacity:0, y:14}} animate={{opacity:1,y:0}} transition={{duration:.6}}>
            <h1 className="text-4xl sm:text-5xl leading-tight font-extrabold">
-  שיעורים פרטיים — מתמטיקה • פיזיקה • מדמ"ח • פסיכומטרי
+  שיעורים פרטיים
+        מתמטיקה • פיזיקה • מדמ"ח • פסיכומטרי
 </h1>
             <p className="mt-5 text-slate-700 dark:text-slate-300 text-lg">
-              שלום, אני רועי — סטודנט למדעי המחשב עם ניסיון בליווי תלמידי חטיבה, תיכון, מכללות
+              שלום, אני רועי, סטודנט למדעי המחשב עם ניסיון בהוראה וליווי תלמידי חטיבה, תיכון, מכללות
               והכנה לפסיכומטרי (כמותי). אחרי שיחת היכרות קצרה (עם ההורה או התלמיד)
               נבנה תכנית לימודים מסודרת עד היעד.
             </p>
