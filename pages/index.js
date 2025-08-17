@@ -109,4 +109,4 @@ export default function Home() {
                 <label className="block">אימייל<br/><input className="w-full mt-1 rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-3" placeholder="name@example.com" /></label>
                 <label className="block">טלפון<br/><input className="w-full mt-1 rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-3" placeholder="054-000-0000" /></label>
               </div>
-              <label className="block mt-3">הודעה<br/><textarea rows={4} className="w-full mt-1 rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-3" placeholder="ספרו לי איך אוכל לע
+   <textarea rows={4} className="w-full mt-1 rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-3" placeholder="ספרו לי איך אוכל לעזור…" />
