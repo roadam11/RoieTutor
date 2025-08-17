@@ -350,6 +350,81 @@ export default function Home(){
           </div>
         </div>
       </section>
-
       {/* שאלות נפוצות */}
-      <section id="faq" className="bg-gradient-to-b from-slate-50 to-white dark:from-ink2 dark:to-
+      <section id="faq" className="bg-gradient-to-b from-slate-50 to-white dark:from-ink2 dark:to-ink border-y border-black/10 dark:border-white/10">
+        <div className="max-w-6xl mx-auto px-4 py-14">
+          <h2 className="text-3xl font-bold text-tealBrand mb-6 reveal">שאלות נפוצות</h2>
+          <div className="space-y-3">
+            {[
+              { q:'כמה זמן נמשך שיעור?', a:'שיעור סטנדרטי בזום — 60 דקות (משעה עגולה). שיעור פרונטלי בבית התלמיד באזור השרון — מינימום שעתיים.' },
+              { q:'איפה מתקיימים השיעורים?', a:'אונליין בזום, וכן פרונטליים באזור השרון (בכפוף לזמינות).' },
+              { q:'איך קובעים שיעור?', a:'משאירים פרטים או פונים בוואטסאפ, ונוכל לתאם מועד לשיעור. אפשר זום או פרונטלי לפי הצורך.' },
+              { q:'איך קובעים תכנית לימודים?', a:'לאחר אבחון קצר נגדיר יעדים, נפרק נושאים לתת-משימות, ונקבע לוח זמנים לשיעורים ולתרגול בית.' },
+              { q:'האם יש שיעור ניסיון?', a:'כן, יש 50% הנחה על שיעור הניסיון.' },
+              { q:'האם אתה מלמד פסיכומטרי (כמותי)?', a:'כן. נבנה מסלול ממוקד לפי רמת פתיחה ומטרת ציון, עם דגש על מהירות, דיוק וניהול זמן.' },
+              { q:'באילו רמות אתה מלמד?', a:'חטיבה, תיכון (כולל 3–5 יחידות), פסיכומטרי, וקורסים אקדמיים נבחרים.' },
+              { q:'מה מדיניות ביטולים?', a:'ביטול/דחייה עד 24 שעות לפני השיעור ללא חיוב. בפחות מכך — יחויב בהתאם למדיניות.' },
+            ].map((f,i)=>(
+              <details key={i} className="rounded-2xl border border-black/10 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur p-5 reveal">
+                <summary className="cursor-pointer select-none font-semibold text-slate-900 dark:text-slate-100 flex items-center justify-between">
+                  {f.q}
+                  <span className="text-slate-400">＋</span>
+                </summary>
+                <p className="mt-3 text-slate-700 dark:text-slate-300 leading-relaxed">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* צור קשר */}
+      <section id="contact">
+        <div className="max-w-6xl mx-auto px-4 py-14">
+          <h2 className="text-3xl font-bold text-tealBrand mb-4 reveal">צור קשר</h2>
+          <div className="grid md:grid-cols-2 gap-10">
+            <div className="rounded-2xl border border-black/10 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur p-5 reveal">
+              <p className="text-slate-700 dark:text-slate-300">אפשר להשאיר הודעה בטופס, או ליצור קשר ישירות.</p>
+              <div className="mt-3 grid gap-3">
+                <a className="flex items-center gap-2 rounded-xl border border-black/10 dark:border-white/10 bg-white/70 dark:bg-white/5 px-3 py-2 hover:bg-white/90 dark:hover:bg-white/10 transition" onClick={()=>ga('whatsapp_click',{location:'contact'})} href="https://wa.me/972549480190">
+                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M20 11.1A8.9 8.9 0 1 1 11.1 2.2 8.9 8.9 0 0 1 20 11.1zm-8.9-7.4a7.4 7.4 0 0 0-6.4 11.2L4 21l6.2-1.7a7.4 7.4 0 1 0 .9-15.6zm4.3 10.7c-.2 0-.4 0-.6-.1-1.6-.4-2.8-1.1-3.8-2.1s-1.7-2.2-2.1-3.8c-.1-.2-.1-.4-.1-.6 0-.3.1-.5.3-.6l.9-.9c.2-.2.4-.3.6-.3.2 0 .4.1.5.3l.7 1.6c.1.2.1.5 0 .7l-.5.8c.5 1 1.2 1.8 2.1 2.4l.8-.5c.2-.1.5-.1.7 0l1.6.7c.2.1.3.3.3.5 0 .2-.1.4-.3.6l-.9.9c-.2.3-.4.4-.7.4z"/></svg>
+                  וואטסאפ: <span dir="ltr" className="font-semibold">054-948-0190</span>
+                </a>
+                <a className="flex items-center gap-2 rounded-xl border border-black/10 dark:border-white/10 bg-white/70 dark:bg-white/5 px-3 py-2 hover:bg-white/90 dark:hover:bg-white/10 transition" href="mailto:Roadam11@gmail.com">
+                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6H4c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 2-8 5-8-5v0l8 6 8-6v0z"/></svg>
+                  מייל: <span className="font-semibold">Roadam11@gmail.com</span>
+                </a>
+                <a className="flex items-center gap-2 rounded-xl border border-black/10 dark:border-white/10 bg-white/70 dark:bg-white/5 px-3 py-2 hover:bg-white/90 dark:hover:bg-white/10 transition" onClick={()=>ga('cta_click',{location:'contact_call'})} href="tel:+972549480190">
+                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6,10.2c1.2,2.4,3.1,4.3,5.5,5.5l1.8-1.8c.3-.3.8-.4,1.2-.3c1,.3,2,.5,3,.5c.7,0,1.2,.5,1.2,1.2v2.9c0,.7-.5,1.2-1.2,1.2C9.8,19.4,4.6,14.2,4.6,7.9c0-.7,.5-1.2,1.2-1.2H8.7c.7,0,1.2,.5,1.2,1.2c0,1,.2,2,.5,3c.1,.4,0,.9-.3,1.2L6.6,10.2z"/></svg>
+                  טלפון: <span dir="ltr" className="font-semibold">054-948-0190</span>
+                </a>
+              </div>
+            </div>
+
+            <form className="rounded-2xl border border-black/10 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur p-5 reveal" onSubmit={(e)=>{e.preventDefault(); ga('contact_form_submit'); alert('תודה! נחזור אליך בהקדם.');}}>
+              <label className="block">שם מלא<br/><input placeholder="לדוגמה: דנה לוי" className="w-full mt-1 rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-3 outline-none focus:ring-2 focus:ring-tealBrand" /></label>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
+                <label className="block">אימייל<br/><input placeholder="name@example.com" className="w-full mt-1 rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-3 outline-none focus:ring-2 focus:ring-tealBrand" /></label>
+                <label className="block">טלפון<br/><input placeholder="054-000-0000" className="w-full mt-1 rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-3 outline-none focus:ring-2 focus:ring-tealBrand" /></label>
+              </div>
+              <label className="block mt-3">הודעה<br/><textarea rows="4" placeholder="ספרו לי איך אוכל לעזור…" className="w-full mt-1 rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-3 outline-none focus:ring-2 focus:ring-tealBrand" /></label>
+              <button className="mt-4 px-6 py-3 rounded-2xl bg-gradient-to-b from-tealBrand to-tealBrand/90 text-[#061019] font-bold shadow-sm hover:shadow-md" type="submit">שליחה</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <footer className="max-w-6xl mx-auto px-4 py-12 text-sm text-slate-500 dark:text-slate-400">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-2">
+          <div>© {new Date().getFullYear()} RoieTutor. כל הזכויות שמורות.</div>
+          <div className="flex gap-4">
+            <a className="hover:text-tealBrand" href="#">תנאי שימוש</a>
+            <a className="hover:text-tealBrand" href="#">מדיניות פרטיות</a>
+          </div>
+        </div>
+      </footer>
+
+      {/* Sticky CTA (mobile only) */}
+      <StickyCTA />
+    </div>
+  )
+}
