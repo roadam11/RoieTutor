@@ -4,15 +4,13 @@ export default function About() {
       <div className="max-w-6xl mx-auto px-4 py-14 text-center">
         <h2 className="text-3xl font-bold text-tealBrand mb-6">אודות</h2>
         <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300 max-w-3xl mx-auto">
-          אני <span className="font-semibold">רועי אדם</span>, מורה פרטי למתמטיקה, פיזיקה ומדעי המחשב. אני משלב ידע מקצועי עם
-          <span className="font-semibold"> יכולת הוראה ממוקדת</span> – להפוך נושאים מורכבים לנגישים וברורים, בקצב שמתאים בדיוק לתלמיד/ה.
+          אני רועי אדם, מורה פרטי ל‑מתמטיקה, פיזיקה ומדעי המחשב. עם ניסיון בליווי תלמידי חטיבה, תיכון וסטודנטים, למדתי להפוך חומר מורכב לנגיש, ברור—even מהנה.
         </p>
         <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300 max-w-3xl mx-auto mt-6">
-          עובד עם תלמידי חטיבה ותיכון (כולל 3–5 יח"ל), סטודנטים בתחילת התואר, והכנה ממוקדת לפסיכומטרי (כמותי). לכל תלמיד/ה נבנית תכנית לימוד אישית עם יעדים ברורים ומעקב התקדמות.
+          בשיעורים שלי תמצאו שילוב של <span className="font-semibold">הסברים בהירים</span>, <span className="font-semibold">שיטות עבודה יעילות</span> ו‑<span className="font-semibold">התאמה אישית מלאה</span> לקצב וליעד של כל תלמיד/ה. המטרה שלי אינה רק ציון גבוה במבחן הבא, אלא גם <span className="font-semibold">ביטחון בלמידה</span>, <span className="font-semibold">חשיבה לוגית</span> וכלים פרקטיים שילוו אתכם הרבה מעבר.
         </p>
-        <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300 max-w-3xl mx-auto mt-6">
-          המטרה שלי: לא רק לשפר ציונים, אלא לבנות <span className="font-semibold">ביטחון בלמידה</span>, לפתח <span className="font-semibold">חשיבה לוגית</span>,
-          ולהעניק כלים פרקטיים ללמידה יעילה — הרבה מעבר למבחן הקרוב.
+        <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300 max-w-3xl mx-auto mt-6 italic">
+          אני מאמין שאין תלמיד שלא יכול—יש תלמיד שעוד לא קיבל את הכלים הנכונים. בונים יחד תכנית מותאמת, ומתקדמים צעד‑צעד עד היעד.
         </p>
       </div>
     </section>
