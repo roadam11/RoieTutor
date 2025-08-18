@@ -1,9 +1,9 @@
 export default function Subjects() {
   const items = [
-    { title: 'מתמטיקה', desc: 'העמקה, פתרון שאלות מורכבות והכנה לבגרויות.' , href: '/subjects/math' },
-    { title: 'פיזיקה', desc: 'הבנת עקרונות, ניסוח ותרגול ממוקד להצלחה.' , href: '/subjects/physics' },
-    { title: 'מדעי המחשב', desc: 'שפות תכנות, חשיבה אלגוריתמית והכנה לקורסים/ראיונות.' , href: '/subjects/cs' },
-    { title: 'פסיכומטרי (כמותי)', desc: 'אסטרטגיות פתרון, ניהול זמן ותרגול מדורג לציון גבוה.' , href: '/subjects/psychometry' },
+    { icon: '📐', title: 'מתמטיקה', desc: 'העמקה, פתרון שאלות והכנה לבגרויות.', href: '/subjects/math' },
+    { icon: '⚡', title: 'פיזיקה', desc: 'הבנת עקרונות ותרגול ממוקד.', href: '/subjects/physics' },
+    { icon: '💻', title: 'מדעי המחשב', desc: 'תכנות, אלגוריתמים והכנה לקורסים/ראיונות.', href: '/subjects/cs' },
+    { icon: '🎯', title: 'פסיכומטרי (כמותי)', desc: 'אסטרטגיות, ניהול זמן ותרגול מדורג.', href: '/subjects/psychometry' },
   ];
 
   return (
@@ -13,6 +13,7 @@ export default function Subjects() {
         <div className="grid md:grid-cols-4 gap-6">
           {items.map((t,i)=>(
             <div key={i} className="rounded-2xl p-6 bg-white/60 dark:bg-white/5 backdrop-blur ring-1 ring-black/10 dark:ring-white/10 hover:shadow-md transition">
+              <div className="text-3xl mb-3">{t.icon}</div>
               <div className="text-xl font-semibold mb-2">{t.title}</div>
               <p className="text-slate-600 dark:text-slate-300 mb-5">{t.desc}</p>
               <a href={t.href} className="inline-block text-sm font-semibold text-tealBrand hover:underline">עוד על התחום</a>
