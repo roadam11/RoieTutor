@@ -4,7 +4,7 @@ export default function About() {
       <div className="max-w-6xl mx-auto px-4 py-14 text-center">
         <h2 className="text-3xl font-bold text-tealBrand mb-6">אודות</h2>
         <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300 max-w-3xl mx-auto">
-          אני <span className="font-semibold">רועי אדם</span>, מורה פרטי למדעי המחשב, מתמטיקה ופיזיקה. אני משלב ידע מקצועי עם
+          אני <span className="font-semibold">רועי אדם</span>, מורה פרטי למתמטיקה, פיזיקה ומדעי המחשב. אני משלב ידע מקצועי עם
           <span className="font-semibold"> יכולת הוראה ממוקדת</span> – להפוך נושאים מורכבים לנגישים וברורים, בקצב שמתאים בדיוק לתלמיד/ה.
         </p>
         <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300 max-w-3xl mx-auto mt-6">
