@@ -1,3 +1,4 @@
+import QuickMatch from '@/components/QuickMatch'
 import Head from 'next/head'
 import About from '@/components/About'
 import Subjects from '@/components/Subjects'
@@ -43,7 +44,7 @@ export default function Home() {
 
       <Subjects />
       <Pricing />
-
+      <QuickMatch />
       {/* עוגן פסיכומטרי נשמר (תוכן מלא אפשר להחזיר בהמשך) */}
       <section id="psy-quant" className="bg-white dark:bg-ink border-y border-black/10 dark:border-white/10">
         <div className="max-w-6xl mx-auto px-4 py-14">
