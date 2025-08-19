@@ -34,7 +34,6 @@ export default function Home() {
           <ul className="hidden md:flex gap-6 text-sm text-slate-600 dark:text-slate-300">
             <li><a href="#services" className="hover:text-tealBrand">תחומי לימוד</a></li>
             <li><a href="#pricing" className="hover:text-tealBrand">תמחור</a></li>
-            <li><a href="#psy-quant" className="hover:text-tealBrand">פסיכומטרי</a></li>
             <li><a href="#about" className="hover:text-tealBrand">אודות</a></li>
             <li><a href="#faq" className="hover:text-tealBrand">שאלות נפוצות</a></li>
             <li><a href="#contact" className="hover:text-tealBrand">צור קשר</a></li>
@@ -51,30 +50,34 @@ export default function Home() {
       </section>
 
       {/* תחומי לימוד */}
-      <Subjects />
+      <section id="services">
+        <Subjects />
+      </section>
 
       {/* תמחור */}
-      <Pricing />
+      <section id="pricing">
+        <Pricing />
+      </section>
 
       {/* תיאום מהיר לוואטסאפ */}
-      <QuickMatch />
-
-      {/* פסיכומטרי (עוגן נשמר, אפשר להרחיב בהמשך) */}
-      <section id="psy-quant" className="bg-white dark:bg-ink border-y border-black/10 dark:border-white/10">
-        <div className="max-w-6xl mx-auto px-4 py-14">
-          <h2 className="text-3xl font-bold text-tealBrand">תכנית לימוד לפסיכומטרי (כמותי)</h2>
-          <p className="mt-3 text-slate-700 dark:text-slate-300">אסטרטגיות פתרון, ניהול זמן ותרגול מדורג לציון גבוה.</p>
-        </div>
+      <section id="quick">
+        <QuickMatch />
       </section>
 
       {/* אודות המשודרג */}
-      <About />
+      <section id="about">
+        <About />
+      </section>
 
       {/* שאלות נפוצות */}
-      <FAQSection />
+      <section id="faq">
+        <FAQSection />
+      </section>
 
       {/* צור קשר */}
-      <ContactSection />
+      <section id="contact">
+        <ContactSection />
+      </section>
 
       {/* כפתור וואטסאפ צף */}
       <FloatingWA />
