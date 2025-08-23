@@ -1,38 +1,58 @@
 import Head from 'next/head'
 import { useEffect } from 'react'
+import SubjectLayout from '../../components/SubjectLayout'
 
 export default function CSPage() {
   useEffect(()=>{ document.documentElement.setAttribute('dir','rtl') },[])
   const wa = (topic) => `https://wa.me/972549480190?text=${encodeURIComponent(`שלום רועי, מעוניין בשיעור במדעי המחשב (${topic}).`)}`;
 
   return (
-    <div className="min-h-screen bg-white dark:bg-ink text-slate-900 dark:text-slate-100">
+    <SubjectLayout
+      title="מדעי המחשב"
+      subtitle="תכנות, אלגוריתמים וחשיבה לוגית — מהבסיס ועד קורסים מתקדמים."
+      icon="💻"
+      gradient="from-indigo-200/40 to-sky-100/0 dark:from-indigo-500/10 dark:to-transparent"
+    >
       <Head>
         <title>RoieTutor — מדעי המחשב</title>
-        <meta name="description" content="שיעורים פרטיים במדעי המחשב: יסודות תכנות, מבני נתונים, אלגוריתמים, הכנה לקורסים וראיונות." />
+        <meta name="description" content="שיעורים פרטיים במדעי המחשב: יסודות תכנות, מבני נתונים, אלגוריתמים, הכנה לקורסים ולעבודות." />
       </Head>
 
-      <main className="max-w-6xl mx-auto px-4 py-14">
-        <h1 className="text-3xl font-extrabold text-tealBrand mb-6">מדעי המחשב</h1>
+      <Section
+        title="חטיבה / תיכון"
+        text="יסודות תכנות (Python/Java), לוגיקה וחשיבה אלגוריתמית, פרויקטים קטנים שמייצרים ביטחון."
+        ctaHref={wa('חטיבה/תיכון')}
+      />
+      <Section
+        title="סטודנטים — יסודות"
+        text="מבני נתונים, אלגוריתמים, OOP וסיבוכיות. תרגול לקורסים וראיונות בסיסיים."
+        bullets={['קוד יחד על לוח שיתופי', 'סיכומי שיעור נקיים', 'ליווי בין שיעורים בוואטסאפ/מייל']}
+        ctaHref={wa('סטודנטים יסודות')}
+      />
+      <Section
+        title="סטודנטים — המשך"
+        text="מערכות הפעלה, רשתות, בסיסי נתונים ופרויקטים. ליווי ב־C/C++/Java/Python."
+        ctaHref={wa('סטודנטים המשך')}
+      />
+    </SubjectLayout>
+  )
+}
 
-        <section className="mb-10">
-          <h2 className="text-xl font-bold mb-2">חטיבה / תיכון</h2>
-          <p className="text-slate-700 dark:text-slate-300">יסודות תכנות (Python/Java), לוגיקה, חשיבה אלגוריתמית ופרויקטים קטנים.</p>
-          <a href={wa('חטיבה/תיכון')} className="inline-block mt-3 rounded-xl px-4 py-2 border hover:border-tealBrand hover:text-tealBrand">תיאום מהיר</a>
-        </section>
-
-        <section className="mb-10">
-          <h2 className="text-xl font-bold mb-2">סטודנטים — יסודות</h2>
-          <p className="text-slate-700 dark:text-slate-300">מבני נתונים, אלגוריתמים, OOP, סיבוכיות, תרגול לקורסים וראיונות בסיסיים.</p>
-          <a href={wa('סטודנטים יסודות')} className="inline-block mt-3 rounded-xl px-4 py-2 border hover:border-tealBrand hover:text-tealBrand">תיאום מהיר</a>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-bold mb-2">סטודנטים — המשך</h2>
-          <p className="text-slate-700 dark:text-slate-300">מערכות הפעלה, רשתות, בסיסי נתונים, פיתוח פרויקטים וליווי ב־C/C++/Java/Python.</p>
-          <a href={wa('סטודנטים המשך')} className="inline-block mt-3 rounded-xl px-4 py-2 border hover:border-tealBrand hover:text-tealBrand">תיאום מהיר</a>
-        </section>
-      </main>
-    </div>
+function Section({ title, text, bullets = [], ctaHref }) {
+  return (
+    <section className="mb-10 animate-fade">
+      <div className="rounded-2xl p-6 bg-white/70 dark:bg-white/5 backdrop-blur ring-1 ring-black/10 dark:ring-white/10">
+        <h2 className="text-xl font-bold mb-2">{title}</h2>
+        <p className="text-slate-700 dark:text-slate-300">{text}</p>
+        {bullets.length > 0 && (
+          <ul className="list-disc pr-5 text-slate-700 dark:text-slate-300 mt-2 space-y-1">
+            {bullets.map((b,i)=><li key={i}>{b}</li>)}
+          </ul>
+        )}
+        <a href={ctaHref} className="inline-block mt-4 rounded-xl px-4 py-2 bg-gradient-to-b from-tealBrand to-tealBrand/90 text-[#061019] font-semibold shadow-sm hover:shadow-md">
+          תיאום מהיר
+        </a>
+      </div>
+    </section>
   )
 }
