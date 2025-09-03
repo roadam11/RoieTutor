@@ -1,23 +1,33 @@
-import '@/styles/globals.css'
 import { useEffect } from 'react'
+import Head from 'next/head'
+import '../styles/globals.css'
 
-export default function App({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }) {
+  // מגדיר RTL לכל האתר
   useEffect(() => {
-    // RTL
-    document.documentElement.setAttribute('dir','rtl')
-
-    // Theme init: saved or system preference
-    const saved = typeof window !== 'undefined' && localStorage.getItem('rt-theme')
-    const prefersLight = typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: light)').matches
-    const useLight = saved ? saved === 'light' : prefersLight
-    document.documentElement.classList.toggle('dark', !useLight)
-
-    // reveal on scroll
-    const obs = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } })
-    },{threshold:0.12})
-    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el))
+    if (typeof document !== 'undefined') {
+      document.documentElement.setAttribute('dir', 'rtl')
+      document.documentElement.lang = 'he'
+    }
   }, [])
 
-  return <Component {...pageProps} />
+  return (
+    <>
+      <Head>
+        {/* PWA */}
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#14b8a6" />
+
+        {/* Icons (תוכל להחליף לקבצים שלך ב-/public/icons) */}
+        <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+        <link rel="icon" href="/icons/icon-192.png" sizes="192x192" />
+        <link rel="icon" href="/icons/icon-512.png" sizes="512x512" />
+
+        {/* Meta בסיסיים */}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+
+      <Component {...pageProps} />
+    </>
+  )
 }
