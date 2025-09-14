@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useEffect } from 'react'
 
-// קומפוננטות תוכן
+// קומפוננטות
 import Hero from '@/components/Hero'
 import Subjects from '@/components/Subjects'
 import Pricing from '@/components/Pricing'
@@ -9,12 +9,10 @@ import QuickMatch from '@/components/QuickMatch'
 import About from '@/components/About'
 import FAQSection from '@/components/FAQ'
 import ContactSection from '@/components/Contact'
-
-// כפתור וואטסאפ צף
 import FloatingWA from '@/components/FloatingWA'
+import Testimonials from '@/components/Testimonials'
 
 export default function Home() {
-  // כיוון RTL לכל העמוד
   useEffect(() => { document.documentElement.setAttribute('dir', 'rtl') }, [])
 
   return (
@@ -35,6 +33,7 @@ export default function Home() {
             <li><a href="#services" className="hover:text-tealBrand">תחומי לימוד</a></li>
             <li><a href="#pricing" className="hover:text-tealBrand">תמחור</a></li>
             <li><a href="#about" className="hover:text-tealBrand">אודות</a></li>
+            <li><a href="#testimonials" className="hover:text-tealBrand">המלצות</a></li>
             <li><a href="#faq" className="hover:text-tealBrand">שאלות נפוצות</a></li>
             <li><a href="#contact" className="hover:text-tealBrand">צור קשר</a></li>
           </ul>
@@ -44,7 +43,7 @@ export default function Home() {
         </nav>
       </header>
 
-      {/* HERO החדש */}
+      {/* HERO */}
       <section id="home">
         <Hero />
       </section>
@@ -64,10 +63,13 @@ export default function Home() {
         <QuickMatch />
       </section>
 
-      {/* אודות המשודרג */}
+      {/* אודות */}
       <section id="about">
         <About />
       </section>
+
+      {/* המלצות — קרוסלה עם Swipe */}
+      <Testimonials />
 
       {/* שאלות נפוצות */}
       <section id="faq">
