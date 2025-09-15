@@ -10,6 +10,7 @@ import FAQSection from '@/components/FAQ'
 import ContactSection from '@/components/Contact'
 import FloatingWA from '@/components/FloatingWA'
 import Testimonials from '@/components/Testimonials'
+import ThemeToggle from '@/components/ThemeToggle'
 
 export default function Home() {
   useEffect(() => { document.documentElement.setAttribute('dir', 'rtl') }, [])
@@ -33,9 +34,12 @@ export default function Home() {
             <li><a href="#faq" className="hover:text-tealBrand">שאלות נפוצות</a></li>
             <li><a href="#contact" className="hover:text-tealBrand">צור קשר</a></li>
           </ul>
-          <a href="#quick" className="hidden md:inline-block px-4 py-2 rounded-xl bg-gradient-to-b from-tealBrand to-tealBrand/90 text-[#061019] font-semibold shadow-sm">
-            קבעו שיעור ניסיון
-          </a>
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+            <a href="#quick" className="hidden md:inline-block px-4 py-2 rounded-xl bg-gradient-to-b from-tealBrand to-tealBrand/90 text-[#061019] font-semibold shadow-sm">
+              קבעו שיעור ניסיון
+            </a>
+          </div>
         </nav>
       </header>
 
@@ -51,7 +55,7 @@ export default function Home() {
       {/* תיאום מהיר */}
       <section id="quick"><QuickMatch /></section>
 
-      {/* המלצות — עכשיו מעל "אודות" */}
+      {/* המלצות — מעל "אודות" */}
       <Testimonials />
 
       {/* אודות */}
