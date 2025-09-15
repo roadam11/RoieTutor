@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import { useEffect } from 'react'
 
-// קומפוננטות
 import Hero from '@/components/Hero'
 import Subjects from '@/components/Subjects'
 import Pricing from '@/components/Pricing'
@@ -19,10 +18,7 @@ export default function Home() {
     <div className="min-h-screen bg-white text-slate-900 dark:bg-ink dark:text-slate-100">
       <Head>
         <title>RoieTutor — שיעורים פרטיים</title>
-        <meta
-          name="description"
-          content="שיעורים פרטיים במתמטיקה, פיזיקה, מדעי המחשב ופסיכומטרי (כמותי). תיאום מהיר בוואטסאפ או טופס, תכנית לימודים אישית ותוצאות."
-        />
+        <meta name="description" content="שיעורים פרטיים במתמטיקה, פיזיקה, מדעי המחשב ופסיכומטרי (כמותי). תיאום מהיר בוואטסאפ או טופס, תכנית לימודים אישית ותוצאות." />
       </Head>
 
       {/* Header */}
@@ -32,8 +28,8 @@ export default function Home() {
           <ul className="hidden md:flex gap-6 text-sm text-slate-600 dark:text-slate-300">
             <li><a href="#services" className="hover:text-tealBrand">תחומי לימוד</a></li>
             <li><a href="#pricing" className="hover:text-tealBrand">תמחור</a></li>
-            <li><a href="#about" className="hover:text-tealBrand">אודות</a></li>
             <li><a href="#testimonials" className="hover:text-tealBrand">המלצות</a></li>
+            <li><a href="#about" className="hover:text-tealBrand">אודות</a></li>
             <li><a href="#faq" className="hover:text-tealBrand">שאלות נפוצות</a></li>
             <li><a href="#contact" className="hover:text-tealBrand">צור קשר</a></li>
           </ul>
@@ -44,47 +40,32 @@ export default function Home() {
       </header>
 
       {/* HERO */}
-      <section id="home">
-        <Hero />
-      </section>
+      <section id="home"><Hero /></section>
 
       {/* תחומי לימוד */}
-      <section id="services">
-        <Subjects />
-      </section>
+      <section id="services"><Subjects /></section>
 
       {/* תמחור */}
-      <section id="pricing">
-        <Pricing />
-      </section>
+      <section id="pricing"><Pricing /></section>
 
-      {/* תיאום מהיר לוואטסאפ */}
-      <section id="quick">
-        <QuickMatch />
-      </section>
+      {/* תיאום מהיר */}
+      <section id="quick"><QuickMatch /></section>
 
-      {/* אודות */}
-      <section id="about">
-        <About />
-      </section>
-
-      {/* המלצות — קרוסלה עם Swipe */}
+      {/* המלצות — עכשיו מעל "אודות" */}
       <Testimonials />
 
+      {/* אודות */}
+      <section id="about"><About /></section>
+
       {/* שאלות נפוצות */}
-      <section id="faq">
-        <FAQSection />
-      </section>
+      <section id="faq"><FAQSection /></section>
 
       {/* צור קשר */}
-      <section id="contact">
-        <ContactSection />
-      </section>
+      <section id="contact"><ContactSection /></section>
 
       {/* כפתור וואטסאפ צף */}
       <FloatingWA />
 
-      {/* Footer */}
       <footer className="max-w-6xl mx-auto px-4 py-12 text-sm text-slate-500 dark:text-slate-400">
         <div className="flex flex-col md:flex-row items-center justify-between gap-2">
           <div>© {new Date().getFullYear()} RoieTutor</div>
