@@ -36,8 +36,9 @@ export default function Home() {
           </ul>
           <div className="flex items-center gap-3">
             <ThemeToggle />
-            <a href="#quick" className="hidden md:inline-block px-4 py-2 rounded-xl bg-gradient-to-b from-tealBrand to-tealBrand/90 text-[#061019] font-semibold shadow-sm">
-              קבעו שיעור ניסיון
+            {/* --- שינוי כאן --- */}
+            <a href="/schedule" className="hidden md:inline-block px-4 py-2 rounded-xl bg-gradient-to-b from-tealBrand to-tealBrand/90 text-[#061019] font-semibold shadow-sm">
+              קביעת שיעור אונליין
             </a>
           </div>
         </nav>
