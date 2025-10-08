@@ -1,26 +1,72 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import SubjectLayout from '../components/SubjectLayout';
 
-// קומפוננטה קטנה להצגת שלבי התהליך
-function ScheduleStep({ number, title, description }) {
-  return (
-    <div className="flex items-start gap-4">
-      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-tealBrand text-white flex items-center justify-center font-bold">
-        {number}
-      </div>
-      <div>
-        <h3 className="font-semibold text-lg">{title}</h3>
-        <p className="text-slate-600 dark:text-slate-300">{description}</p>
-      </div>
-    </div>
-  );
+// --- אייקונים חדשים לשלבים ---
+const CalendarIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+);
+const FormIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+);
+const CheckIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+);
+
+// --- קומפוננטה משודרגת להצגת שלבי התהליך ---
+function ScheduleStepsTimeline() {
+    const steps = [
+        { icon: <CalendarIcon />, title: "בחרו מועד", description: "עיינו ביומן ובחרו את היום והשעה הנוחים לכם ביותר מהזמנים הפנויים." },
+        { icon: <FormIcon />, title: "מלאו פרטים", description: "הזינו את שמכם, כתובת המייל שלכם, וענו על מספר שאלות קצרות שיעזרו לי להתכונן לשיעור." },
+        { icon: <CheckIcon />, title: "קבלו אישור", description: "זהו! תקבלו אישור הזמנה למייל עם כל הפרטים, והשיעור ישוריין אוטומטית ביומן של שנינו." }
+    ];
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.3,
+            },
+        },
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 20 },
+        show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+    };
+
+    return (
+        <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.5 }}
+            className="relative space-y-8"
+        >
+            {/* הקו האנכי שמחבר בין השלבים */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 top-4 bottom-4 w-0.5 bg-slate-200 dark:bg-slate-700"></div>
+
+            {steps.map((step, index) => (
+                <motion.div key={index} variants={itemVariants} className="relative flex flex-col items-center">
+                    <div className="flex items-center justify-center w-12 h-12 rounded-full bg-tealBrand text-white z-10 ring-8 ring-white dark:ring-ink">
+                        {step.icon}
+                    </div>
+                    <div className="text-center mt-4">
+                        <h3 className="font-bold text-xl">{step.title}</h3>
+                        <p className="text-slate-600 dark:text-slate-300 max-w-xs">{step.description}</p>
+                    </div>
+                </motion.div>
+            ))}
+        </motion.div>
+    );
 }
+
 
 export default function SchedulePage() {
   const [isLoading, setIsLoading] = useState(true);
 
-  // קוד ההטמעה של Calendly
   const calendlyEmbedCode = `
     <div 
       class="calendly-inline-widget" 
@@ -32,13 +78,10 @@ export default function SchedulePage() {
   useEffect(() => {
     document.documentElement.setAttribute('dir', 'rtl');
     
-    // טעינת הסקריפט של Calendly
     const script = document.createElement('script');
     script.src = 'https://assets.calendly.com/assets/external/widget.js';
     script.async = true;
     script.onload = () => {
-      // ברגע שהסקריפט נטען, אנו מניחים שהווידג'ט יתחיל להופיע
-      // נאפשר לו עוד שנייה "להתבשל" לפני שמסתירים את הטעינה
       setTimeout(() => setIsLoading(false), 1000);
     };
     document.body.appendChild(script);
@@ -74,24 +117,10 @@ export default function SchedulePage() {
           <div dangerouslySetInnerHTML={{ __html: calendlyEmbedCode }} />
         </div>
 
-        <div className="mt-12">
-            <h2 className="text-2xl font-bold text-center mb-8">איך זה עובד? שלוש خطوات פשוטות</h2>
-            <div className="space-y-6 max-w-2xl mx-auto">
-                <ScheduleStep 
-                    number="1"
-                    title="בחרו מועד"
-                    description="עיינו ביומן ובחרו את היום והשעה הנוחים לכם ביותר מהזמנים הפנויים."
-                />
-                <ScheduleStep 
-                    number="2"
-                    title="מלאו פרטים"
-                    description="הזינו את שמכם, כתובת המייל שלכם, וענו על מספר שאלות קצרות שיעזרו לי להתכונן לשיעור."
-                />
-                <ScheduleStep 
-                    number="3"
-                    title="קבלו אישור"
-                    description="זהו! תקבלו אישור הזמנה למייל עם כל הפרטים, והשיעור ישוריין אוטומטית ביומן של שנינו."
-                />
+        <div className="mt-16">
+            <h2 className="text-3xl font-bold text-center mb-12">איך זה עובד? שלוש خطوات פשוטות</h2>
+            <div className="max-w-md mx-auto">
+              <ScheduleStepsTimeline />
             </div>
         </div>
       </SubjectLayout>
