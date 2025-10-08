@@ -15,7 +15,8 @@ export default function Hero() {
           בונים יחד תכנית לימודים אישית ומתקדמים צעד־צעד עד היעד — עם ליווי בין שיעורים, סיכומים ותכנית תרגול.
         </p>
         <div className="mt-6 flex flex-wrap gap-3 animate-fade-delayed">
-          <a href="#quick" className="px-5 py-3 rounded-2xl bg-gradient-to-b from-tealBrand to-tealBrand/90 text-[#061019] font-bold shadow-sm">קבעו שיעור ניסיון</a>
+          {/* --- שינוי כאן --- */}
+          <a href="/schedule" className="px-5 py-3 rounded-2xl bg-gradient-to-b from-tealBrand to-tealBrand/90 text-[#061019] font-bold shadow-sm">קביעת שיעור אונליין</a>
           <a href="#pricing" className="px-5 py-3 rounded-2xl border border-black/10 dark:border-white/15 hover:border-tealBrand hover:text-tealBrand">תמחור</a>
         </div>
       </div>
