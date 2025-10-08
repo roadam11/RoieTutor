@@ -3,8 +3,10 @@ import { useEffect } from 'react';
 import SubjectLayout from '../components/SubjectLayout'; // שימוש בקומפוננטת הבסיס המעוצבת שלנו
 
 export default function SchedulePage() {
-  // קטע הקוד שהעתקת מ-Calendly.
-  // חשוב: יש להדביק כאן את קטע הקוד המדויק שקיבלת.
+ <!-- Calendly inline widget begin -->
+<div class="calendly-inline-widget" data-url="https://calendly.com/roadam11/meet-with-me" style="min-width:320px;height:700px;"></div>
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<!-- Calendly inline widget end -->
   const calendlyEmbedCode = `
     <!-- Calendly inline widget begin -->
     <div class="calendly-inline-widget" data-url="https://calendly.com/your-username/your-event" style="min-width:320px;height:700px;"></div>
