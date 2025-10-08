@@ -1,12 +1,10 @@
 import { useEffect } from 'react';
 import Head from 'next/head';
-import { AnimatePresence, motion } from 'framer-motion';
-import { useRouter } from 'next/router';
+import { motion, AnimatePresence } from 'framer-motion';
 import '../styles/globals.css';
 
-export default function MyApp({ Component, pageProps }) {
-  const router = useRouter();
-
+export default function MyApp({ Component, pageProps, router }) {
+  // מגדיר RTL לכל האתר
   useEffect(() => {
     if (typeof document !== 'undefined') {
       document.documentElement.setAttribute('dir', 'rtl');
@@ -14,27 +12,29 @@ export default function MyApp({ Component, pageProps }) {
     }
   }, []);
 
-  const pageVariants = {
-    hidden: { opacity: 0, y: 5 },
-    enter: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
-    exit: { opacity: 0, y: -5, transition: { duration: 0.3, ease: "easeIn" } },
-  };
-
   return (
     <>
       <Head>
+        {/* PWA */}
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#14b8a6" />
-        <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+
+        {/* Icons (עדכון: הנתיבים פונים ישירות ל-public) */}
+        <link rel="apple-touch-icon" href="/icon-192.png" />
+        <link rel="icon" href="/icon-192.png" sizes="192x192" />
+        <link rel="icon" href="/icon-512.png" sizes="512x512" />
+
+        {/* Meta בסיסיים */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
+
+      <AnimatePresence mode="wait">
         <motion.div
           key={router.route}
-          variants={pageVariants}
-          initial="hidden"
-          animate="enter"
-          exit="exit"
+          initial={{ opacity: 0, y: 5 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 5 }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
         >
           <Component {...pageProps} />
         </motion.div>
@@ -42,3 +42,4 @@ export default function MyApp({ Component, pageProps }) {
     </>
   );
 }
+
