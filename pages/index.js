@@ -36,7 +36,7 @@ export default function Home() {
           </ul>
           <div className="flex items-center gap-3">
             <ThemeToggle />
-            {/* --- שינוי כאן --- */}
+            {/* --- הקישור הנכון לעמוד קביעת השיעורים --- */}
             <a href="/schedule" className="hidden md:inline-block px-4 py-2 rounded-xl bg-gradient-to-b from-tealBrand to-tealBrand/90 text-[#061019] font-semibold shadow-sm">
               קביעת שיעור אונליין
             </a>
@@ -53,7 +53,7 @@ export default function Home() {
       {/* תמחור */}
       <section id="pricing"><Pricing /></section>
 
-      {/* תיאום מהיר */}
+      {/* תיאום מהיר (נשאר למי שמעדיף וואטסאפ) */}
       <section id="quick"><QuickMatch /></section>
 
       {/* המלצות — מעל "אודות" */}
