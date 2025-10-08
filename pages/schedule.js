@@ -118,7 +118,7 @@ export default function SchedulePage() {
         </div>
 
         <div className="mt-16">
-            <h2 className="text-3xl font-bold text-center mb-12">איך זה עובד? שלוש خطوات פשוטות</h2>
+            <h2 className="text-3xl font-bold text-center mb-12">איך זה עובד? שלוש פעולות פשוטות</h2>
             <div className="max-w-md mx-auto">
               <ScheduleStepsTimeline />
             </div>
